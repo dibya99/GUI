@@ -11,6 +11,7 @@
 class node_1
 {
 private:
+  int checker;
   cv::Mat img;
   ros::NodeHandle nh;
   image_transport::ImageTransport it;
