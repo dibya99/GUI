@@ -12,15 +12,18 @@ class node_1
 {
 private:
   int checker;
-  cv::Mat img;
+
   ros::NodeHandle nh;
   image_transport::ImageTransport it;
   image_transport::Publisher pub;
   ros::Subscriber sub;
   sensor_msgs::ImagePtr mg;
 public:
+  cv::Mat img;
   node_1(ros::NodeHandle _nh);
   void callback(std_msgs::Int32 msg);
+  void execute();
+  bool check();
 
 };
 #endif

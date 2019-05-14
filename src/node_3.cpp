@@ -16,11 +16,12 @@ node_3::~node_3()
 }
 void node_3::callback(const sensor_msgs::ImageConstPtr& msg)
 {
-  cv::Mat img=cv_bridge::toCvShare(msg,"bgr8")->image;
+  cv::Mat img=cv_bridge::toCvShare(msg,"mono8")->image;
   pix=QPixmap::fromImage(QImage((const unsigned char*)(img.data),img.cols,img.rows,img.step,QImage::Format_Indexed8));
   int w=ui->label->width();
   int h=ui->label->height();
-  ui->label->setPixmap(pix.scaled(300,300,Qt::KeepAspectRatio));
+  ui->label->setPixmap(pix.scaled(w,h,Qt::AspectRatioMode));
+  //.scaled(w,h),Qt::KeepAspectRatio
 
 
 }
@@ -41,7 +42,7 @@ void node_3::on_checkBox_clicked(bool checked)
    else
    {
     msg.data=0;
-    pub.publish(msg); 
+    pub.publish(msg);
    }
 
 
