@@ -2,11 +2,11 @@
 int main(int argc,char **argv)
 {
 
-  cv::VideoCapture c(0);
+  cv::VideoCapture c;
   ros::init(argc,argv,"Node1");
   ros::NodeHandle nh;
-  node_1 obj(nh);
-  ros::Rate o(5000);
+  node_1 obj(nh,&c);
+  ros::Rate o(10);
   while(ros::ok())
   {
   if(obj.check())

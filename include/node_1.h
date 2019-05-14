@@ -12,7 +12,7 @@ class node_1
 {
 private:
   int checker;
-
+  cv::VideoCapture *cap;
   ros::NodeHandle nh;
   image_transport::ImageTransport it;
   image_transport::Publisher pub;
@@ -20,7 +20,7 @@ private:
   sensor_msgs::ImagePtr mg;
 public:
   cv::Mat img;
-  node_1(ros::NodeHandle _nh);
+  node_1(ros::NodeHandle _nh,cv::VideoCapture *c);
   void callback(std_msgs::Int32 msg);
   void execute();
   bool check();
